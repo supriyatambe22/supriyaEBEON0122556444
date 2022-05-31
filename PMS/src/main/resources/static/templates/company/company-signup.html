@@ -1,0 +1,132 @@
+<!doctype html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="base::Layout(~{::section})">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+   <link rel="stylesheet" href="/css/style1.css">
+   
+  </head>
+  <body>
+  <section>
+  <div class="container">
+	  <div class="col-md-6 offset-3">
+				  <div class="mycard1 mt-3">
+				  		  <div class="container text-center">
+				  		  <img style="width: 80px;" alt="" th:src="@{/image/register.png}">
+				  </div>
+				 		 <h3 style="text-align: center;">Company Registration</h3>
+				 		 
+				 		 <form th:action="@{/registerCompany}", method="post" th:object="${companydetails}" enctype="multipart/form-data">
+				 			 <div th:if="${session.message1}" th:classappend="${session.message1.messageType}" class="alert" role="alert">
+								  <p th:text="${session.message1.content}" ></p>
+								  <th:block th:text="${#session.removeAttribute('message1')}"></th:block>
+							  </div>
+
+							  <div class="form-group">
+								    <label for="exampleInputEmail1">Company Name</label>
+								    <input type="text" 
+								    class="form-control" 
+								    id="exampleInputEmail1" 
+								    name="companyName"
+								    placeholder="Enter Your Company Name"
+								    th:value="${companydetails.companyName}"
+								    th:classappend="${#fields.hasErrors('companyName') ? 'is-invalid' :''}"  >
+								     <div class="invalid-feedback" th:each="e: ${#fields.errors('companyName')}" th:text="${e}">
+							 
+							      </div>
+								  </div>
+								  <div class="form-group">
+									    <label for="exampleInputEmail1">Email Address</label>
+									    <input type="email" 
+									    class="form-control" 
+									    id="exampleInputEmail1" 
+									    name="companyEmail"
+									    placeholder="Enter Your Company Email Id"
+	    								th:value="${companydetails.companyEmail}"
+								    	th:classappend="${#fields.hasErrors('companyEmail') ? 'is-invalid' :''}"  >
+								     	<div class="invalid-feedback" th:each="e: ${#fields.errors('companyEmail')}" th:text="${e}">
+							 
+							      </div>
+								  </div>
+							  <div class="form-group">
+								    <label for="exampleInputEmail1">Company Contact</label>
+								    <input type="text" 
+								    class="form-control" 
+								    id="exampleInputEmail1" 
+								    name="companyContact"
+								    placeholder="Enter Your Company Contact Number"
+	    							th:value="${companydetails.companyContact}"
+								    th:classappend="${#fields.hasErrors('companyContact') ? 'is-invalid' :''}"  >
+								    <div class="invalid-feedback" th:each="e: ${#fields.errors('companyContact')}" th:text="${e}">
+							 
+							   </div>
+							   </div>
+   							  		<div class="form-group">
+								    <label for="exampleInputEmail1">Company Address</label>
+								    <input type="text" 
+								    class="form-control" 
+								    id="exampleInputEmail1" 
+								    name="companyAddress"
+								    placeholder="Enter Your Company Address"
+	    							th:value="${companydetails.companyAddress}"
+								    th:classappend="${#fields.hasErrors('companyAddress') ? 'is-invalid' :''}"  >
+								    <div class="invalid-feedback" th:each="e: ${#fields.errors('companyAddress')}" th:text="${e}">
+							 
+							   </div>
+							   </div>
+  							   <div class="form-group">
+								    <label for="exampleInputEmail1">Company</label>
+								    <input type="file" 
+								    class="form-control" 
+								    
+								    name="CompanyLogoImage">
+							 
+							   </div>
+ 							  	<div class="form-check">
+							  		<input class="form-check-input" type="checkbox"  name="agreement" id="defaultCheck1">
+							  		<label class="form-check-label" for="defaultCheck1">
+							  		I accept terms and conditions.
+							  		</label>
+							  </div>
+   							  
+							  <div class="form-group mt-3" align="center">
+							   		<input type="submit" class="btn btn-success"  value="Register">
+							   		
+							  </div>
+							    <div>
+		  								 <a th:href="@{/company-login}">Already have a Account ?</a>
+  								</div>
+						 </form>	  
+			 	  </div>
+  	  </div>
+  </div>
+  
+  </section>
+  
+  
+  
+  
+    
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    -->
+
+</body>
+</html>

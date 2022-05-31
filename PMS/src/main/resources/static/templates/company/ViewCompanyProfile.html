@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="company/base-company::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>View Company Profile</title>
+</head>
+<body>
+<section>
+<div class="container text-center mt-3">
+
+<img alt="company logo" th:src="@{'/image/'+${session.company.companyLogo}}" style="height:200px; width: 200px;" class="my_company_logo" />
+
+<h1 class="text-center  mt-4"  th:text="${session.company.companyName}" ></h1>
+
+<table class="table text-center">
+<thead>
+
+<tr>
+<th scope="row">Email Address</th>
+<td><span th:text="${session.company.companyEmail}"></span></td>
+</tr>
+
+<tr>
+<th scope="row">Contact Number</th>
+<td><span th:text="${session.company.companyContact}"></span></td>
+</tr>
+
+<tr>
+<th scope="row">Address</th>
+<td><span th:text="${session.company.companyAddress}"></span></td>
+</tr>
+
+
+
+
+</table>
+</div>
+</section>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <link rel="stylesheet" href="/css/style1.css">
+   
+</head>
+<body>
+<section class="background d-flex align-content-center  align-item-center">
+	<div class="container">
+	<div class="company-login">
+				  <div class="container text-center">
+				  		  <img style="width: 80px;" alt="" th:src="@{/image/login.png}">
+				  </div>
+	<h2 style="text-align: center;">Company Login</h2>
+<form th:action="@{/checkLogin33}" method="post">
+  <div class="form-group">
+	    <label for="exampleInputEmail1">Enter UserName</label>
+	    <input type="email"
+	     name="companyEmail"  
+	     class="form-control" 
+	     placeholder="Enter Your Company Email Id"
+	     id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="form-group">
+	    <label for="exampleInputPassword1">Password</label>
+	    <input type="password"
+	      name="companyContact" 
+	      class="form-control"
+	      placeholder="Enter Your Registered Mobile Number"
+	      id="exampleInputPassword1">
+  </div>
+  <div class="form-group mt-3" align="center">
+		  <input type="submit" class="btn btn-primary" value="Login"/>
+	
+  </div>
+  <div align="center">
+		   <a th:href="@{/company-signup}">Register a New Company</a>
+  </div> <br>
+    <div class="container" align="center">
+		   <a th:href="@{/forgot}">Forgot Password ?</a>
+  </div> 
+</form>
+</div>
+</div>
+</section>
+</body>
+</html>

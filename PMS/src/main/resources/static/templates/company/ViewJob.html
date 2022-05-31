@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="student/base-student::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+<br>
+<h1 align="center">View Jobs</h1>
+						<div th:if="${session.message1}"
+							th:classappend="${session.message1.messageType}" class="alert"
+							role="alert">
+							<p th:text="${session.message1.content}"></p>
+							<th:block th:text="${#session.removeAttribute('message1')}"></th:block>
+						</div>
+<div class="container">
+<!-- <div  class="alert alert-success mt-3" role="alert">
+You have successfullt applied for the Job
+</div> -->
+<table style="width: 100%" class="table mt-4">
+  <thead class="thead-dark">
+    <tr>
+     <th scope="col">Job Id</th>
+     <th scope="col">Company</th>
+      <th scope="col">Job Role</th>
+      <th scope="col">Job Description</th>
+      <th scope="col">Job Location</th>
+      <th scope="col">Job Package</th>
+      <th scope="col">Job PostDate</th>
+      <th scope="col">Job ExpiryDate</th>
+      <th scope="col">  Action  </th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="jobdetails:${jdObj2}">
+    	<td th:text="${jobdetails.jobId}"></td>
+   <td th:text="${jobdetails.companydetails.companyName}"></td>
+    	<td th:text="${jobdetails.jobRole}"></td>
+    	<td th:text="${jobdetails.jobDescription}"></td>
+    	<td th:text="${jobdetails.jobLocation}"></td>
+    	<td th:text="${jobdetails.jobPackage}"></td>
+    	<td th:text="${jobdetails.jobPostdate}"></td>
+    	<td th:text="${jobdetails.jobExpirydate}"></td>
+    	<td>
+      <!--   <button  type="button" class="btn btn-primary"><a th:href="@{/applyJob{jobId}(jobId=${jobdetails.jobId})}" style="color: white;">Apply</a></button>
+         -->
+<!--          <button  type="button" class="btn btn-primary"><a th:href="@{/applyJob{jobId}(jobId=${jobdetails.jobId})/{studentId}(studentId=${session.studentId})}" style="color: white;">Apply</a></button>
+        -->
+        
+       <!--  <button  type="button" class="btn btn-primary"><a th:href="@{'/applyJob?jobId='+${jobdetails.jobId}+'&studentId='+${session.studentId}}" style="color: white;">Apply</a></button>
+         -->
+        
+        <button  type="button" class="btn btn-primary"><a th:href="@{/applyJob{jobId}/{studentId} (jobId=${jobdetails.jobId},studentId=${session.studentId})}" style="color: white;">Apply</a></button>
+        
+                                                         <!-- /applyJob{jobId}/applyJob{studentId} (jobId=${jobdetails.jobId},studentId=${session.studentId})} -->
+        
+        
+<!--         <td><button type="button" class="btn btn-primary"><a href="#" style="color: white;">Update</a></button> 
+        | <button type="button" class="btn btn-danger"><a th:href="@{deleteStudent{studentId}(studentId=${student.studentId})}"
+         style="color: white;">Delete</a> </button></td> -->
+        
+        
+       
+   	    </td>
+    </tr>	
+
+  </tbody>
+</table>
+				<!-- Pagination Part -->
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination" >
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+
+
+
+</div>
+</section>
+</body>
+</html>

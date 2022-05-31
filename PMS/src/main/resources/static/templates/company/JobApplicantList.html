@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="company/base-company::Layout(~{::section})>
+<head>
+<meta charset="ISO-8859-1">
+<title>Job Applicant List</title>
+</head>
+<body>
+<section>
+<h1 align="center">Get Job Applicant List</h1>
+<div class="container">
+<table style="width: 100%" class="table mt-4">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Job Id</th>
+      <th scope="col">Company</th>
+      <th scope="col">Job Role</th>
+      <th scope="col">Location</th>
+      <th scope="col">Status</th>
+      <th scope="col">Applicant List</th>
+
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="appliedjob:${appliedjobObj}">
+    	<td th:text="${appliedjob.jobId}"></td>
+    	<td th:text="${appliedjob.companyName}"></td>
+    	<td th:text="${appliedjob.jobRole}"></td>
+    	<td th:text="${appliedjob.jobLocation}"></td>
+    	<td th:text="${appliedjob.Status}"></td>
+
+    </tr>	
+
+  </tbody>
+</table>
+				<!-- Pagination Part -->
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination" >
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+</body>
+</html>

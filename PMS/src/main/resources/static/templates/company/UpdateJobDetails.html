@@ -1,0 +1,125 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <title>Update Job Details</title>
+    <link rel="stylesheet" href="/css/style1.css">
+   
+  </head>
+  <body>
+
+  <div class="container">
+	  <div class="col-md-6 offset-3">
+				  <div class="mycard1 mt-3">
+				  					<div class="container text-center">
+						<img style="width: 80px;" alt="" th:src="@{/image/update.png}">
+					</div>
+				 		 <h3 style="text-align: center;">Job Details</h3>
+				 		 
+				 		 <form th:action="@{/saveUpdateJobDetails{companyId}(companyId=${session.company.companyId})}", method="post" th:object="${jobdetails}">
+				 			 <div th:if="${session.message1}" th:classappend="${session.message1.messageType}" class="alert" role="alert">
+								  <p th:text="${session.message1.content}" ></p>
+								  <th:block th:text="${#session.removeAttribute('message1')}"></th:block>
+							  </div>
+						
+							  <div class="form-group">
+								    <label for="exampleInputEmail1">Job Role</label>
+								    <input type="text" 
+								    class="form-control" 
+								    id="exampleInputEmail1" 
+								    name="jobRole"
+								    placeholder="Enter Job Role"
+								    th:value="${jobdetails.jobRole}"
+								    th:classappend="${#fields.hasErrors('jobRole') ? 'is-invalid' :''}"  >
+								     <div class="invalid-feedback" th:each="e: ${#fields.errors('jobRole')}" th:text="${e}">
+							 
+							      </div>
+								  </div>
+								  <div class="form-group">
+									    <label for="exampleInputEmail1">Job Description</label>
+									    <input type="text" 
+									    class="form-control" 
+									    id="exampleInputEmail1" 
+									    name="jobDescription"
+									    placeholder="Enter Job Description"
+	    								th:value="${jobdetails.jobDescription}"
+								    	th:classappend="${#fields.hasErrors('jobDescription') ? 'is-invalid' :''}"  >
+								     	<div class="invalid-feedback" th:each="e: ${#fields.errors('jobDescription')}" th:text="${e}">
+							 
+							      </div>
+								  </div>
+							  <div class="form-group">
+								    <label for="exampleInputEmail1">Job Location</label>
+								    <input type="text" 
+								    class="form-control" 
+								    id="exampleInputEmail1" 
+								    name="jobLocation"
+								    placeholder="Enter Job Location"
+	    							th:value="${jobdetails.jobLocation}"
+								    th:classappend="${#fields.hasErrors('jobLocation') ? 'is-invalid' :''}"  >
+								    <div class="invalid-feedback" th:each="e: ${#fields.errors('jobLocation')}" th:text="${e}">
+							 
+							   </div>
+							   </div>
+   							  <div class="form-group">
+								    <label for="exampleInputEmail1">Job Package</label>
+								    <input type="text" 
+								    class="form-control" 
+								    id="exampleInputEmail1" 
+								    name="jobPackage"
+	    							th:value="${jobdetails.jobPackage}"
+								    th:classappend="${#fields.hasErrors('jobPackage') ? 'is-invalid' :''}"  >
+								    <div class="invalid-feedback" th:each="e: ${#fields.errors('jobPackage')}" th:text="${e}">
+							 
+							   </div>
+							   </div>
+							   
+      							    <div class="form-group">
+								    <label for="exampleInputEmail1">Job PostDate</label>
+								    <input type="Date" 
+								    class="form-control" 
+								    id="exampleInputEmail1" 
+								    name="jobPostdate"
+	    							th:value="${jobdetails.jobPostdate}"
+								    th:classappend="${#fields.hasErrors('jobPostdate') ? 'is-invalid' :''}"  >
+								    <div class="invalid-feedback" th:each="e: ${#fields.errors('jobPostdate')}" th:text="${e}">
+							 
+							   </div>
+							   </div>
+
+      							    <div class="form-group">
+								    <label for="exampleInputEmail1">Job ExpiryDate</label>
+								    <input type="Date" 
+								    class="form-control" 
+								    id="exampleInputEmail1" 
+								    name="jobExpirydate"
+	    							th:value="${jobdetails.jobExpirydate}"
+								    th:classappend="${#fields.hasErrors('jobExpirydate') ? 'is-invalid' :''}"  >
+								    <div class="invalid-feedback" th:each="e: ${#fields.errors('jobExpirydate')}" th:text="${e}">
+							 
+							   </div>
+							   </div>
+				 		       <div class="form-check">
+							  		<input class="form-check-input" type="checkbox"  name="agreement" id="defaultCheck1">
+							  		<label class="form-check-label" for="defaultCheck1">
+							  		I accept terms and conditions.
+							  		</label>
+							  </div>
+							  <div class="form-group mt-3" align="center">
+							   		<input type="submit" class="btn btn-info"  value="Save">
+							  
+							  </div>
+						 </form>	  
+			 	  </div>
+  	  </div>
+  </div>
+  
+
+</body>
+</html>
